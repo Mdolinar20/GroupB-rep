@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - GroupB_Project</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -31,10 +32,43 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+    <!--Hero Section -->
+    <div class="main">
+        <div class="main__container">
+            <div class="main__content">
+                <h1>POMODORO</h1>
+                <h2>Get Back Your Time</h2>
+                <p>See how time blocking works!</p>
+                <button class="main__btn"><a href="/">Get Started</a></button>
+            </div>
+            <div class="main__img--container">
+                <img src="https://images.pexels.com/photos/9880350/pexels-photo-9880350.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="pic" id="main__img">
+            </div>
+        </div>
     </div>
+    <!-- Services Section  -->
+    <div class="services">
+        <h1>See what the hype is about</h1>
+        <div class="services__container">
+            <div class="services__card">
+                <h2>Experience Bliss</h2>
+                <p>AI Powered Technology</p>
+                <button>Ger Started</button>
+            </div>
+            <div class="services__card">
+                <h2>Are you Ready?</h2>
+                <p>Take the Leap!</p>
+                <button>Ger Started</button>
+            </div>
+        </div>
+    </div>
+
+    
 
     <footer class="border-top footer text-muted">
         <div class="container">

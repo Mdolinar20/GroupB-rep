@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jungj\\Desktop\\GroupB-rep\\GroupB_Project\\GroupB_Project.csproj": {}
+    "C:\\Users\\molin\\source\\repos\\GroupB-rep\\GroupB_Project\\GroupB_Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jungj\\Desktop\\GroupB-rep\\GroupB_Project\\GroupB_Project.csproj": {
+    "C:\\Users\\molin\\source\\repos\\GroupB-rep\\GroupB_Project\\GroupB_Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jungj\\Desktop\\GroupB-rep\\GroupB_Project\\GroupB_Project.csproj",
+        "projectUniqueName": "C:\\Users\\molin\\source\\repos\\GroupB-rep\\GroupB_Project\\GroupB_Project.csproj",
         "projectName": "GroupB_Project",
-        "projectPath": "C:\\Users\\jungj\\Desktop\\GroupB-rep\\GroupB_Project\\GroupB_Project.csproj",
-        "packagesPath": "C:\\Users\\jungj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jungj\\Desktop\\GroupB-rep\\GroupB_Project\\obj\\",
+        "projectPath": "C:\\Users\\molin\\source\\repos\\GroupB-rep\\GroupB_Project\\GroupB_Project.csproj",
+        "packagesPath": "C:\\Users\\molin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\molin\\source\\repos\\GroupB-rep\\GroupB_Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jungj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\molin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
