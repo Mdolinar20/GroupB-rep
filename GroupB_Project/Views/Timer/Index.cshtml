@@ -21,10 +21,12 @@
     </div>
     <br /><br />
     <script>
+        var timer;
+
         function startTimer() {
             var endTime = new Date().getTime() + 25 * 60000;
 
-            var timer = setInterval(function () {
+            timer = setInterval(function () {
                 var now = new Date().getTime();
                 var duration = endTime - now;
 
@@ -49,11 +51,18 @@
         });
 
         function stopTimer() {
-
+            clearInterval(timer);
         }
+        $("#stopButton").click(function () {
+            stopTimer();
+
+        });
 
         function resetTimer() {
 
         }
+        $("#resetButton").click(function () {
+            resetTimer();
+        });
     </script>
 </body>
