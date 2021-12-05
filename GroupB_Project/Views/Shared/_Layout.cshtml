@@ -10,8 +10,8 @@
 </head>
 <body>
     <header>
-        <nav class= "navbar">
-             <!--"navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">-->
+        <nav class="navbar">
+            <!--"navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">-->
             <div class="navbar__container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GroupB_Project</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -35,26 +35,13 @@
             </div>
         </nav>
     </header>
-    
 
-    <!--Hero Section -->
+
+    <!--Moved this code to Home/index.cshtml-->
     <div class="main">
-        <div class="main__container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-            <div class="main__content">
-                <h1>POMODORO</h1>
-                <h2>Get Back Your Time</h2>
-                <p>See how time blocking works!</p>
-                <button class="main__btn">
-                <a href="/">Get Started</a>
-                </button>
-            </div>
-            <div class="main__img--container">
-                <img src="https://images.pexels.com/photos/9880350/pexels-photo-9880350.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="pic" id="main__img">
-            </div>
-        </div>
+
+        @RenderBody()
+
     </div>
     <!-- Services Section  -->
     <div class="services">
@@ -73,7 +60,7 @@
         </div>
     </div>
 
-    
+
 
     <footer class="border-top footer text-muted">
         <div class="container">
