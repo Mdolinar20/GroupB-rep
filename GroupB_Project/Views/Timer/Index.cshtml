@@ -39,23 +39,38 @@
             <span id="minutes">25</span>:<span id="seconds">00</span>
         </div>
         <div class="timer_buttons">
-            <button onclick="startTimer" class="startButton">Start</button>
-            <button onclick="stopTimer" class="stopButton">Stop</button>
-            <button onclick="resetTimer" class="resetButton">Reset</button>
+            <input type="button" class ="startButton" id="startButton" value="Start"/>
+            <input type="button" class="stopButton" id="stopButton" value="Stop" />
+            <input type="button" class="resetButton" id="resetButton" value="Reset" />
         </div>
     </div>
     <br /><br />
     <script>
         function startTimer() {
+            var currentTime = new Date().getTime();
+            var endTime = new Date(currentTime + 25 * 60000);
 
+            var timer = setInterval(function() {
+                var distance = endTime - currentTime;
+                $("#minutes").text(Math.floor(distance % (1000 * 60 * 60)) / (1000 * 60));
+                $("#seconds").text(Math.floor((distance % (1000 * 60)) / 1000));
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    alert("Timer Done");
+                }
+            }, 1000);
         }
+        $("#startButton").click(function () {
+            startTimer();
+        });
 
         function stopTimer() {
 
         }
 
         function resetTimer() {
-
+            startTimer();
         }
     </script>
 </body>
