@@ -1,6 +1,7 @@
 ﻿using GroupB_Project.Data;
 using GroupB_Project.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace GroupB_Project.Controllers
         // Navigate to the Input Screen 
         public IActionResult Inputs()
         {
+            
             return View();
         }
         // Post Generation 
@@ -40,7 +42,8 @@ namespace GroupB_Project.Controllers
             return RedirectToAction("Index");
         }
        
-
+        //Months
+        
 
     }
 }
