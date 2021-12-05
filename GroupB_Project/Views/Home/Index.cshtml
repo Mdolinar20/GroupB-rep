@@ -8,7 +8,7 @@
 @using System.IO;
 @using System.Threading;
 
-@functions{
+@*@functions{
 
     //if google imports are broken use nuGet package manager and call 'Install-Package Google.Apis.Calendar.v3'
     String GetCalendarService()
@@ -80,7 +80,7 @@
                 throw;
             }
         }
-    }
+    }*@
 
     @{
         ViewData["Title"] = "Home Page";
@@ -93,10 +93,10 @@
                     <h1>POMODORO</h1>
                     <h2>Get Back Your Time</h2>
                     <p>See how time blocking works!</p>
-                    <p>
-                        @GetCalendarService()
+                    <!-----<p>
+                        @*GetCalendarService()*@
                         
-                    </p>
+                    </p>--->
                     <button class="main__btn">
                         <a href="/">Get Started</a>
                     </button>
