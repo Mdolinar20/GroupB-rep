@@ -3,34 +3,31 @@
     ViewData["Title"] = "TimerView";
 }
 
-<div class="timer" style="background-color: rgba(128, 128, 128, .5); display: inline-block;">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function startTimer() {
 
-    <div class="timer_numbers" style="text-align: center;">
-       <span class="timer_minutes" style="color: white; font-size: 48px;">25</span>
-       <span class="timer_colon" style="color: white; font-size: 48px;">:</span>
-       <span class="timer_seconds" style="color: white; font-size: 48px;">00</span>
-    </div>
+        }
 
-    <div class="timer_buttons">
-        <button type="button" id="timer_start" style="height: 50px; width: 100px; background-color: green; color: white;">Start</button>
-        <button type="button" id="timer_pause" style="height: 50px; width: 100px; background-color: red; color: white;">Pause</button>
-        <button type="button" id="timer_reset" style="height: 50px; width: 100px;">Reset</button>
-    </div>
+        function pauseTimer() {
 
-</div>
+        }
 
-<script>
+        function resetTimer() {
 
-    function startTimer() {
-
-    }
-
-    function stopTimer() {
-
-    }
-
-    function resetTimer() {
-
-    }
-
-</script>
+        }
+    </script>
+</head>
+ <body>
+     <div class="timer" style="background-color: rgba(128, 128, 128, .5); display: inline-block;">
+         <div class="timer_numbers" style="color: white; font-size: 48px; text-align: center;">
+             <span id="minutes">25</span>:<span id="seconds">00</span>
+         </div>
+         <div class="timer_buttons">
+             <button onclick="startTimer" style="height: 50px; width: 100px; background-color: green; color: white;">Start</button>
+             <button onclick="pauseTimer" style="height: 50px; width: 100px; background-color: red; color: white;">Pause</button>
+             <button onclick="resetTimer" style="height: 50px; width: 100px;">Reset</button>
+         </div>
+     </div>
+ </body>
