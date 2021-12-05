@@ -18,12 +18,16 @@ namespace GroupB_Project.Controllers
         }
 
         // Return the Current Plan of Studying for the Future on the Index Page
-       public IActionResult Index()
+        public IActionResult Index()
         {
-            IEnumerable<Plans> objList = _db.Plan;
+            IEnumerable<Plans> objList = _db.Plans;
             return View(objList);
         }
-        
+        // Navigate to the Input Screen 
+        public IActionResult Inputs()
+        {
+            return View();
+        }
         // Post Generation 
         [HttpPost]
         // Log in Authentication 
@@ -31,15 +35,11 @@ namespace GroupB_Project.Controllers
         public IActionResult Inputs(Plans obj)
         {
             //Add to DB
-            _db.Plan.Add(obj);
+            _db.Plans.Add(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-        // Navigate to the Input Screen 
-        public IActionResult Inputs()
-        {
-            return View();
-        }
+       
 
 
     }

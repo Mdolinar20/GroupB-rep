@@ -14,6 +14,6 @@ namespace GroupB_Project.Data
         {
         }
 
-        public DbSet<Plans> Plan { get; set; }
+        public DbSet<Plans> Plans { get; set; }
     }
 }
