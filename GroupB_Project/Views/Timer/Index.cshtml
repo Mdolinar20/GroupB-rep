@@ -39,7 +39,7 @@
             <span id="minutes">25</span>:<span id="seconds">00</span>
         </div>
         <div class="timer_buttons">
-            <input type="button" class ="startButton" id="startButton" value="Start"/>
+            <input type="button" class="startButton" id="startButton" value="Start"/>
             <input type="button" class="stopButton" id="stopButton" value="Stop" />
             <input type="button" class="resetButton" id="resetButton" value="Reset" />
         </div>
@@ -47,18 +47,22 @@
     <br /><br />
     <script>
         function startTimer() {
-            var currentTime = new Date().getTime();
-            var endTime = new Date(currentTime + 25 * 60000);
+            var endTime = new Date().getTime() + 25 * 60000;
 
-            var timer = setInterval(function() {
-                var distance = endTime - currentTime;
-                $("#minutes").text(Math.floor(distance % (1000 * 60 * 60)) / (1000 * 60));
-                $("#seconds").text(Math.floor((distance % (1000 * 60)) / 1000));
+            var timer = setInterval(function () {
+                var now = new Date().getTime();
+                var duration = endTime - now;
 
-                if (distance < 0) {
+                var minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((duration % (1000 * 60)) / 1000);
+
+                $("#minutes").text(minutes);
+                $("#seconds").text(seconds);
+
+                if (duration < 0) {
                     clearInterval(timer);
-                    alert("Timer Done");
-                }
+                    alert("Done");
+                } 
             }, 1000);
         }
         $("#startButton").click(function () {
@@ -70,7 +74,7 @@
         }
 
         function resetTimer() {
-            startTimer();
+
         }
     </script>
 </body>
