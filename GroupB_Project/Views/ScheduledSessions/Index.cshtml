@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GroupB_Project.Models.ScheduledSession>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<img src="https://images.pexels.com/photos/5386754/pexels-photo-5386754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class=" img-thumbnail img-fluid " style="max-height:100px"  />
+<h1 class="text-center">Let's Plan!</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.sessionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subject)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sessionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subject)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.sessionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.sessionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.sessionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
