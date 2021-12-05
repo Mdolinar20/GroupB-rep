@@ -15,7 +15,7 @@ namespace GroupB_Project.Models
         public string subject { get; set; }
         [Display(Name = "Next Session")]
         [DisplayFormat(DataFormatString ="{0:dd-MMMa-YYYY}", ApplyFormatInEditMode = true)]
-        public DateTime DateTime { get; set; }
+        public DateTime dtmDate { get; set; }
 
 
     }
