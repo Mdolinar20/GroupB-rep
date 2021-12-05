@@ -4,47 +4,14 @@
 }
 
 <head>
+    <link rel="stylesheet" href="~/css/timerStyle.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
-        .timer_numbers {
-            color: white;
-            font-size: 48px;
-            text-align: center;
-        }
-        .timer_buttons {
-            text-align:center;
-        }
-        .startButton {
-            height: 50px;
-            width: 100px;
-            border-radius: 4px;
-            background-color: green;
-            color: white;
-            font-weight: bold;
-        }
-        .stopButton {
-            height: 50px;
-            width: 100px;
-            border-radius: 4px;
-            background-color: red;
-            color: white;
-            font-weight: bold;
-        }
-        .resetButton {
-            height: 50px;
-            width: 100px;
-            border-radius: 4px;
-            background-color: black;
-            color: white;
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body>
     <br /><br />
     <div class="timer">
         <div class="timer_numbers">
-            <span id="minutes">25</span>:<span id="seconds">00</span>
+            <span id="minutes">25</span>:<span id="seconds" style="list-style-type: decimal-leading-zero;">00</span>
         </div>
         <div class="timer_buttons">
             <input type="button" class="startButton" id="startButton" value="Start"/>
@@ -55,7 +22,7 @@
     <br /><br />
     <script>
         function startTimer() {
-            var endTime = new Date().getTime() + 25 * 60000;
+            var endTime = new Date().getTime() + 1.2 * 60000;
 
             var timer = setInterval(function () {
                 var now = new Date().getTime();
@@ -63,12 +30,16 @@
 
                 var minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((duration % (1000 * 60)) / 1000);
-
-                $("#minutes").text(minutes);
-                $("#seconds").text(seconds);
+                
+                if (minutes < 10) { $("#minutes").text("0" + minutes); }
+                else { $("#minutes").text(minutes); }
+                if (seconds < 10) { $("#seconds").text("0" + seconds); }
+                else { $("#seconds").text(seconds); }
 
                 if (duration < 0) {
                     clearInterval(timer);
+                    $("#minutes").text("00");
+                    $("#seconds").text("00");
                     alert("Done");
                 } 
             }, 1000);
