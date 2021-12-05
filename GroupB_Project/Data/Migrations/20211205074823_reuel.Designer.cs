@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroupB_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211205062634_afterTestCreate")]
-    partial class afterTestCreate
+    [Migration("20211205074823_reuel")]
+    partial class reuel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,25 +21,25 @@ namespace GroupB_Project.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("GroupB_Project.Models.Plans", b =>
+            modelBuilder.Entity("GroupB_Project.Models.ScheduledSession", b =>
                 {
-                    b.Property<int>("planId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("dtmDate")
+                    b.Property<DateTime>("ScheduledDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("hours")
-                        .HasColumnType("int");
-
-                    b.Property<string>("subject")
+                    b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("planId");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.ToTable("Plans");
+                    b.HasKey("Id");
+
+                    b.ToTable("ScheduledSessions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -2,10 +2,57 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@*Main Section *@
+@*
+    <div class="main">
+        <div class="main_container p-3">
+            <h1 class="display-2 text-center">Pomodoro</h1>
+            <blockquote class="blockquote text-center">Save time through focus</blockquote>
+        </div>
     </div>
+*@
+@*Sub-Section*@
+<div class="container">
+    <div class="row align-items-baseline-start">
+        @*ZTest*@
+
+        <div class="col">
+
+            <h2 class="display-4 text-center">Quick Start</h2>
+            <div class="text-center">
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">
+                    <img src="https://images.pexels.com/photos/4144100/pexels-photo-4144100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="thumbnail rounded img-fluid" alt="Timer Image" />
+                </a>
+            </div>
+        </div>
+
+        @*Quick Start*@
+
+           <div class="col">
+
+            <h2 class="display-4 text-center">Quick Start</h2>
+            <div class="text-center">
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">
+                    <img src="https://images.pexels.com/photos/4144100/pexels-photo-4144100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="thumbnail rounded img-fluid" alt="Timer Image" />
+                </a>
+            </div>
+        </div>
+
+        @*Schedule*@
+
+        <div class="col">
+
+            <h2 class="display-4 text-center">Plan</h2>
+            <div class="text-center">
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">
+                    <img src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="thumbnail rounded img-fluid" alt="Timer Image" />
+                </a>
+            </div>
+        </div>
+
+        
+</div>
+
 
 <!--Hero Section -->
 <!-- <div class="main">
