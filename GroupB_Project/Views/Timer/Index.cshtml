@@ -11,7 +11,7 @@
     <br /><br />
     <div class="timer">
         <div class="timer_numbers">
-            <span id="minutes">25</span>:<span id="seconds" style="list-style-type: decimal-leading-zero;">00</span>
+            <span id="minutes">25</span>:<span id="seconds">00</span>
         </div>
         <div class="timer_buttons">
             <input type="button" class="startButton" id="startButton" value="Start"/>
@@ -22,7 +22,7 @@
     <br /><br />
     <script>
         function startTimer() {
-            var endTime = new Date().getTime() + 1.2 * 60000;
+            var endTime = new Date().getTime() + 25 * 60000;
 
             var timer = setInterval(function () {
                 var now = new Date().getTime();
