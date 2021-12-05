@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GroupB_Project.Data;
 using GroupB_Project.Models;
+using GroupB_Project.GoogleApi;
 
 namespace GroupB_Project.Controllers
 {
@@ -54,10 +55,12 @@ namespace GroupB_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserId,ScheduledDate,Subject")] ScheduledSession scheduledSession)
+        public async Task<IActionResult> Create([Bind("Id,UserId,ScheduledDateStart,ScheduleDateEnd,Subject,Location")] ScheduledSession scheduledSession)
         {
             if (ModelState.IsValid)
             {
+                createGoogleEvent(scheduledSession.ScheduledDateStart, scheduledSession.ScheduleDateEnd, scheduledSession.Subject, scheduledSession.Location);
+
                 _context.Add(scheduledSession);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -86,7 +89,7 @@ namespace GroupB_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,UserId,ScheduledDate,Subject")] ScheduledSession scheduledSession)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UserId,ScheduledDateStart,ScheduleDateEnd,Subject,Location")] ScheduledSession scheduledSession)
         {
             if (id != scheduledSession.Id)
             {
@@ -97,6 +100,7 @@ namespace GroupB_Project.Controllers
             {
                 try
                 {
+                    
                     _context.Update(scheduledSession);
                     await _context.SaveChangesAsync();
                 }
@@ -148,6 +152,13 @@ namespace GroupB_Project.Controllers
         private bool ScheduledSessionExists(int id)
         {
             return _context.ScheduledSessions.Any(e => e.Id == id);
+        }
+
+        private void createGoogleEvent(DateTime start, DateTime end, String subject, String location)
+        {
+            CalenderServiceHandler google = new CalenderServiceHandler();
+
+            google.CreateEvent(google.GetCalendarService(), start, end, subject, location);
         }
     }
 }

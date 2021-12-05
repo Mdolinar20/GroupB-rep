@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroupB_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211205055746_AddingScheduler")]
+    [Migration("20211205064839_AddingScheduler")]
     partial class AddingScheduler
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,13 @@ namespace GroupB_Project.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("ScheduledDate")
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ScheduleDateEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ScheduledDateStart")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Subject")

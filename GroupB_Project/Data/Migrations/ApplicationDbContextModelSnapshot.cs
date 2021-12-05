@@ -26,7 +26,13 @@ namespace GroupB_Project.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("ScheduledDate")
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ScheduleDateEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ScheduledDateStart")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Subject")

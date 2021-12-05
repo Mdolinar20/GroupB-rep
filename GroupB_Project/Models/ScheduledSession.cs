@@ -9,7 +9,9 @@ namespace GroupB_Project.Models
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public DateTime ScheduledDate { get; set; }
+        public DateTime ScheduledDateStart { get; set; }
+        public DateTime ScheduleDateEnd { get; set; }
         public string Subject { get; set; }
+        public string Location { get; set; }
     }
 }

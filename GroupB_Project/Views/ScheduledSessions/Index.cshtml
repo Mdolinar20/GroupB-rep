@@ -7,16 +7,23 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Schedule New Session</a>
+    <a asp-action="Create">Schedule New Event</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            
             <th>
-                @Html.DisplayNameFor(model => model.ScheduledDate)
+                @Html.DisplayNameFor(model => model.ScheduledDateStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleDateEnd)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
             </th>
             <th></th>
         </tr>
@@ -24,15 +31,21 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-           
+            
             <td>
-                @Html.DisplayFor(modelItem => item.ScheduledDate)
+                @Html.DisplayFor(modelItem => item.ScheduledDateStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleDateEnd)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Subject)
             </td>
             <td>
-                
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
