@@ -41,9 +41,13 @@ namespace GroupB_Project.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-       
+
         //Months
-        
+        public IActionResult TestCreate()
+        {
+
+            return View();
+        }
 
     }
 }
