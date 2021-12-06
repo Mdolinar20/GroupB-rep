@@ -11,22 +11,35 @@
     <h4>ScheduledSession</h4>
     <hr />
     <dl class="row">
+        
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.sessionDate)
+            @Html.DisplayNameFor(model => model.ScheduledDateStart)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.sessionDate)
+            @Html.DisplayFor(model => model.ScheduledDateStart)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.subject)
+            @Html.DisplayNameFor(model => model.ScheduleDateEnd)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.subject)
+            @Html.DisplayFor(model => model.ScheduleDateEnd)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Location)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="sessionId" />
+        <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GroupB_Project.Data;
 using GroupB_Project.Models;
+using GroupB_Project.GoogleApi;
 
 namespace GroupB_Project.Controllers
 {
@@ -22,7 +23,7 @@ namespace GroupB_Project.Controllers
         // GET: ScheduledSessions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ScheduledSession.ToListAsync());
+            return View(await _context.ScheduledSessions.ToListAsync());
         }
 
         // GET: ScheduledSessions/Details/5
@@ -33,8 +34,8 @@ namespace GroupB_Project.Controllers
                 return NotFound();
             }
 
-            var scheduledSession = await _context.ScheduledSession
-                .FirstOrDefaultAsync(m => m.sessionId == id);
+            var scheduledSession = await _context.ScheduledSessions
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (scheduledSession == null)
             {
                 return NotFound();
@@ -54,10 +55,12 @@ namespace GroupB_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("sessionId,sessionDate,subject")] ScheduledSession scheduledSession)
+        public async Task<IActionResult> Create([Bind("Id,UserId,ScheduledDateStart,ScheduleDateEnd,Subject,Location")] ScheduledSession scheduledSession)
         {
             if (ModelState.IsValid)
             {
+                createGoogleEvent(scheduledSession.ScheduledDateStart, scheduledSession.ScheduleDateEnd, scheduledSession.Subject, scheduledSession.Location);
+
                 _context.Add(scheduledSession);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -73,7 +76,7 @@ namespace GroupB_Project.Controllers
                 return NotFound();
             }
 
-            var scheduledSession = await _context.ScheduledSession.FindAsync(id);
+            var scheduledSession = await _context.ScheduledSessions.FindAsync(id);
             if (scheduledSession == null)
             {
                 return NotFound();
@@ -86,9 +89,9 @@ namespace GroupB_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("sessionId,sessionDate,subject")] ScheduledSession scheduledSession)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UserId,ScheduledDateStart,ScheduleDateEnd,Subject,Location")] ScheduledSession scheduledSession)
         {
-            if (id != scheduledSession.sessionId)
+            if (id != scheduledSession.Id)
             {
                 return NotFound();
             }
@@ -97,12 +100,13 @@ namespace GroupB_Project.Controllers
             {
                 try
                 {
+                    
                     _context.Update(scheduledSession);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ScheduledSessionExists(scheduledSession.sessionId))
+                    if (!ScheduledSessionExists(scheduledSession.Id))
                     {
                         return NotFound();
                     }
@@ -124,8 +128,8 @@ namespace GroupB_Project.Controllers
                 return NotFound();
             }
 
-            var scheduledSession = await _context.ScheduledSession
-                .FirstOrDefaultAsync(m => m.sessionId == id);
+            var scheduledSession = await _context.ScheduledSessions
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (scheduledSession == null)
             {
                 return NotFound();
@@ -139,15 +143,22 @@ namespace GroupB_Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var scheduledSession = await _context.ScheduledSession.FindAsync(id);
-            _context.ScheduledSession.Remove(scheduledSession);
+            var scheduledSession = await _context.ScheduledSessions.FindAsync(id);
+            _context.ScheduledSessions.Remove(scheduledSession);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ScheduledSessionExists(int id)
         {
-            return _context.ScheduledSession.Any(e => e.sessionId == id);
+            return _context.ScheduledSessions.Any(e => e.Id == id);
+        }
+
+        private void createGoogleEvent(DateTime start, DateTime end, String subject, String location)
+        {
+            CalenderServiceHandler google = new CalenderServiceHandler();
+
+            google.CreateEvent(google.GetCalendarService(), start, end, subject, location);
         }
     }
 }
