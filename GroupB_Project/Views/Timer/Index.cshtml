@@ -23,7 +23,7 @@
     <script>
         var timer;
 
-        function startTimer() {
+        $("#startButton").click(function startTimer() {
             var endTime = new Date().getTime() + 25 * 60000;
 
             timer = setInterval(function () {
@@ -45,24 +45,14 @@
                     alert("Done");
                 } 
             }, 1000);
-        }
-        $("#startButton").click(function () {
-            startTimer();
         });
 
-        function stopTimer() {
+        $("#stopButton").click(function stopStimer() {
             clearInterval(timer);
-        }
-        $("#stopButton").click(function () {
-            stopTimer();
-
         });
 
-        function resetTimer() {
+        $("#resetButton").click(function resetTimer() {
 
-        }
-        $("#resetButton").click(function () {
-            resetTimer();
         });
     </script>
 </body>
