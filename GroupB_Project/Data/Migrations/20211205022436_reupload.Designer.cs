@@ -4,14 +4,16 @@ using GroupB_Project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GroupB_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211205022436_reupload")]
+    partial class reupload
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,9 +28,6 @@ namespace GroupB_Project.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("dtmDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("hours")
                         .HasColumnType("int");
 
@@ -38,27 +37,6 @@ namespace GroupB_Project.Data.Migrations
                     b.HasKey("planId");
 
                     b.ToTable("Plans");
-                });
-
-            modelBuilder.Entity("GroupB_Project.Models.ScheduledSession", b =>
-                {
-                    b.Property<int>("sessionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("desiredTime")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("sessionDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("subject")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("sessionId");
-
-                    b.ToTable("ScheduledSession");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
