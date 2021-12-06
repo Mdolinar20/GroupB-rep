@@ -12,16 +12,27 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="sessionId" />
+            <input type="hidden" asp-for="Id" />
+            
             <div class="form-group">
-                <label asp-for="sessionDate" class="control-label"></label>
-                <input asp-for="sessionDate" class="form-control" />
-                <span asp-validation-for="sessionDate" class="text-danger"></span>
+                <label asp-for="ScheduledDateStart" class="control-label"></label>
+                <input asp-for="ScheduledDateStart" class="form-control" />
+                <span asp-validation-for="ScheduledDateStart" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="subject" class="control-label"></label>
-                <input asp-for="subject" class="form-control" />
-                <span asp-validation-for="subject" class="text-danger"></span>
+                <label asp-for="ScheduleDateEnd" class="control-label"></label>
+                <input asp-for="ScheduleDateEnd" class="form-control" />
+                <span asp-validation-for="ScheduleDateEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -34,3 +45,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

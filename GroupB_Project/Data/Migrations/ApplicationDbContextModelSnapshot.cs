@@ -19,46 +19,31 @@ namespace GroupB_Project.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("GroupB_Project.Models.Plans", b =>
-                {
-                    b.Property<int>("planId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("dtmDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("hours")
-                        .HasColumnType("int");
-
-                    b.Property<string>("subject")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("planId");
-
-                    b.ToTable("Plans");
-                });
-
             modelBuilder.Entity("GroupB_Project.Models.ScheduledSession", b =>
                 {
-                    b.Property<int>("sessionId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("desiredTime")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("sessionDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("subject")
+                    b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("sessionId");
+                    b.Property<DateTime>("ScheduleDateEnd")
+                        .HasColumnType("datetime2");
 
-                    b.ToTable("ScheduledSession");
+                    b.Property<DateTime>("ScheduledDateStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ScheduledSessions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

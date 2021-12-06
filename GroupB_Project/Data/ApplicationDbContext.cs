@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GroupB_Project.Models;
 
 namespace GroupB_Project.Data
 {
@@ -13,8 +14,6 @@ namespace GroupB_Project.Data
             : base(options)
         {
         }
-
-        public DbSet<Plans> Plans { get; set; }
-        public DbSet<ScheduledSession> ScheduledSession { get; set; }
+        public DbSet<ScheduledSession> ScheduledSessions { get; set; }
     }
 }

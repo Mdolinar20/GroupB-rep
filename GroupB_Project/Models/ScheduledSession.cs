@@ -9,12 +9,11 @@ namespace GroupB_Project.Models
 {
     public class ScheduledSession
     {
-        [Key]
-        public int sessionId { get; set; }
-        public DateTime sessionDate { get; set; }
-        public string subject { get; set; }
-        [DisplayName("Desired Time")]
-        public int desiredTime { get; set; }
-
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public DateTime ScheduledDateStart { get; set; }
+        public DateTime ScheduleDateEnd { get; set; }
+        public string Subject { get; set; }
+        public string Location { get; set; }
     }
 }
