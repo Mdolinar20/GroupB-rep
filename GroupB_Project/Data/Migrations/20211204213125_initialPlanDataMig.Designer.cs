@@ -4,30 +4,29 @@ using GroupB_Project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GroupB_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211204213125_initialPlanDataMig")]
+    partial class initialPlanDataMig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.12")
+                .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("GroupB_Project.Models.Plans", b =>
+            modelBuilder.Entity("GroupB_Project.Models.Plan", b =>
                 {
                     b.Property<int>("planId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("dtmDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("hours")
                         .HasColumnType("int");
@@ -37,28 +36,7 @@ namespace GroupB_Project.Data.Migrations
 
                     b.HasKey("planId");
 
-                    b.ToTable("Plans");
-                });
-
-            modelBuilder.Entity("GroupB_Project.Models.ScheduledSession", b =>
-                {
-                    b.Property<int>("sessionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("desiredTime")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("sessionDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("subject")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("sessionId");
-
-                    b.ToTable("ScheduledSession");
+                    b.ToTable("Plan");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
