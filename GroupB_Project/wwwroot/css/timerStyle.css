@@ -1,0 +1,35 @@
+﻿.timer_numbers {
+    font-size: 48px;
+    text-align: center;
+}
+
+.timer_buttons {
+    text-align: center;
+}
+
+.startButton {
+    height: 50px;
+    width: 100px;
+    border-radius: 4px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}
+
+.stopButton {
+    height: 50px;
+    width: 100px;
+    border-radius: 4px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.resetButton {
+    height: 50px;
+    width: 100px;
+    border-radius: 4px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
