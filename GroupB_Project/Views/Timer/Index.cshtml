@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "TimerView";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/timerStyle.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <br /><br />
+    <div class="timer">
+        <div class="timer_numbers">
+            <span id="minutes">25</span>:<span id="seconds">00</span>
+        </div>
+        <div class="timer_buttons">
+            <input type="button" class="startButton" id="startButton" value="Start"/>
+            <input type="button" class="stopButton" id="stopButton" value="Stop" />
+            <input type="button" class="resetButton" id="resetButton" value="Reset" />
+        </div>
+    </div>
+    <br /><br />
+    <script>
+        var timer;
+
+        function startTimer() {
+            var endTime = new Date().getTime() + 25 * 60000;
+
+            timer = setInterval(function () {
+                var now = new Date().getTime();
+                var duration = endTime - now;
+
+                var minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((duration % (1000 * 60)) / 1000);
+                
+                if (minutes < 10) { $("#minutes").text("0" + minutes); }
+                else { $("#minutes").text(minutes); }
+                if (seconds < 10) { $("#seconds").text("0" + seconds); }
+                else { $("#seconds").text(seconds); }
+
+                if (duration < 0) {
+                    clearInterval(timer);
+                    $("#minutes").text("00");
+                    $("#seconds").text("00");
+                    alert("Done");
+                } 
+            }, 1000);
+        }
+        $("#startButton").click(function () {
+            startTimer();
+        });
+
+        function stopTimer() {
+            clearInterval(timer);
+        }
+        $("#stopButton").click(function () {
+            stopTimer();
+
+        });
+
+        function resetTimer() {
+
+        }
+        $("#resetButton").click(function () {
+            resetTimer();
+        });
+    </script>
+</body>
