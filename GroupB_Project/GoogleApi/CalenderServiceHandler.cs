@@ -55,13 +55,9 @@ namespace GroupB_Project.GoogleApi
         public void CreateEvent(CalendarService _service, DateTime start, DateTime end, String subject, String location)
         {
             Event body = new Event();
-            EventAttendee a = new EventAttendee();
-            a.Email = "bunsomendoza@gmail.com";
-       
-            List<EventAttendee> attendes = new List<EventAttendee>();
-            attendes.Add(a);
          
-            body.Attendees = attendes;
+         
+       
             EventDateTime startTime = new EventDateTime();
             startTime.DateTime = start;
             EventDateTime endTime = new EventDateTime();
@@ -70,7 +66,7 @@ namespace GroupB_Project.GoogleApi
             body.End = endTime;
             body.Location = location;
             body.Summary = subject;
-            EventsResource.InsertRequest request = new EventsResource.InsertRequest(_service, body, "bunsomendoza@gmail.com");
+            EventsResource.InsertRequest request = new EventsResource.InsertRequest(_service, body, "pomodoro.test.lwtech@gmail.com");
             Event response = request.Execute();
         }
     }
