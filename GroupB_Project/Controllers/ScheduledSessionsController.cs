@@ -14,9 +14,10 @@ namespace GroupB_Project.Controllers
     public class ScheduledSessionsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        System.Security.Claims.ClaimsPrincipal currentUser;
         public ScheduledSessionsController(ApplicationDbContext context)
-        {
+        {  
+            currentUser = this.User;
             _context = context;
         }
 
@@ -63,7 +64,7 @@ namespace GroupB_Project.Controllers
             if (ModelState.IsValid)
             {
                 
-                
+                //adding event to google calendar
                 createGoogleEvent(scheduledSession.ScheduledDateStart, scheduledSession.ScheduleDateEnd, scheduledSession.Subject, scheduledSession.Location);
 
                 _context.Add(scheduledSession);
@@ -159,6 +160,7 @@ namespace GroupB_Project.Controllers
             return _context.ScheduledSessions.Any(e => e.Id == id);
         }
 
+        //To add the event created to google calendar
         private void createGoogleEvent(DateTime start, DateTime end, String subject, String location)
         {
             CalenderServiceHandler google = new CalenderServiceHandler();
