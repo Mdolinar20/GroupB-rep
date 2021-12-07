@@ -23,6 +23,7 @@
     <script>
         var timer;
 
+        // start button that sets 25 min timer
         $("#startButton").click(function startTimer() {
             var endTime = new Date().getTime() + 25 * 60000;
 
@@ -46,11 +47,13 @@
                 } 
             }, 1000);
         });
-
+        
+        // pauses timer
         $("#stopButton").click(function stopStimer() {
             clearInterval(timer);
         });
 
+        // resets timer back to 25 mins
         $("#resetButton").click(function resetTimer() {
 
         });
