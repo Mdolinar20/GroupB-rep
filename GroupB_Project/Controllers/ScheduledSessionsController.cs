@@ -57,8 +57,13 @@ namespace GroupB_Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UserId,ScheduledDateStart,ScheduleDateEnd,Subject,Location")] ScheduledSession scheduledSession)
         {
+            //Make end of session 30 min after start
+            scheduledSession.ScheduleDateEnd = scheduledSession.ScheduledDateStart.AddMinutes(30);
+
             if (ModelState.IsValid)
             {
+                
+                
                 createGoogleEvent(scheduledSession.ScheduledDateStart, scheduledSession.ScheduleDateEnd, scheduledSession.Subject, scheduledSession.Location);
 
                 _context.Add(scheduledSession);
