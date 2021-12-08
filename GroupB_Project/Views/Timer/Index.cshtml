@@ -22,8 +22,9 @@
     <br /><br />
     <script>
         var timer;
-
-        function startTimer() {
+        
+        // start button that sets 25 min timer
+        $("#startButton").click(function startTimer() {
             var endTime = new Date().getTime() + 25 * 60000;
 
             timer = setInterval(function () {
@@ -45,24 +46,16 @@
                     alert("Done");
                 } 
             }, 1000);
-        }
-        $("#startButton").click(function () {
-            startTimer();
         });
 
-        function stopTimer() {
+        // pauses timer
+        $("#stopButton").click(function stopStimer() {
             clearInterval(timer);
-        }
-        $("#stopButton").click(function () {
-            stopTimer();
-
         });
 
-        function resetTimer() {
+        // restarts 25 min timer
+        $("#resetButton").click(function resetTimer() {
 
-        }
-        $("#resetButton").click(function () {
-            resetTimer();
         });
     </script>
 </body>

@@ -17,7 +17,7 @@ function onPomodoroTimer(){
   stopTimer();
 
   gHours = 0;
-  gMinutes = 50;
+  gMinutes = 25;
   gSeconds = 0;
 
   resetTimer();
@@ -47,7 +47,7 @@ function onLongTimer(){
   stopTimer();
 
   gHours = 0;
-  gMinutes = 15;
+  gMinutes = 30;
   gSeconds = 0;
 
   resetTimer();
