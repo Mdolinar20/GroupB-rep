@@ -33,4 +33,31 @@ namespace TestGroupB_Project
             //Assert.NotEqual(newUser.UserId, expected);
         }
     }
+    
+        public class ScheduledSessionLocationTest
+    {
+        [Fact]
+        public void LocationTest()
+        {
+            string newLocation = "Redmond";
+            ScheduledSession newScheduledSession = new ScheduledSession();
+
+            newScheduledSession.Location = newLocation;
+
+            Assert.Equals(newScheduledSession.Subject, newLocation);
+        }
+
+        [Theory]
+        [InlineData("Home", "Home")]
+        [InlineData("School", "School")]
+        [InlineData("Work", "Work")]
+        public void LocationAcceptsAllInput(string newLocation, string expected)
+        {
+            ScheduledSession newScheduledSession = new ScheduledSession();
+
+            newScheduledSession.Location = newLocation;
+
+            Assert.Equals(newScheduledSession.Location, expected);
+        }
+    }
 }
