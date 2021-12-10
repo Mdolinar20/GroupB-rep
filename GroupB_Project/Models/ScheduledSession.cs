@@ -11,9 +11,12 @@ namespace GroupB_Project.Models
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        [DisplayName("Session Starting Time")]
         public DateTime ScheduledDateStart { get; set; }
         public DateTime ScheduleDateEnd { get; set; }
+        [DisplayName ("Session Study Subject")]
         public string Subject { get; set; }
+        [DisplayName("Study Location")]
         public string Location { get; set; }
     }
 }
