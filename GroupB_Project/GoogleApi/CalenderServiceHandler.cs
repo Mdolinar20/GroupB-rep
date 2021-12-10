@@ -7,6 +7,8 @@ using Google.Apis.Util.Store;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using System.Net;
+using Google.Apis.Auth.OAuth2.Flows;
 
 namespace GroupB_Project.GoogleApi
 {
@@ -14,14 +16,18 @@ namespace GroupB_Project.GoogleApi
     {
         public CalendarService GetCalendarService()
         {
-            try
-            {
-                string[] Scopes = {
+            
+            string[] scopes = {
                 CalendarService.Scope.Calendar,
                 CalendarService.Scope.CalendarEvents,
                 CalendarService.Scope.CalendarEventsReadonly
             };
 
+          
+            try
+            {
+                
+              
                 UserCredential credential;
 
                 using (var stream = new FileStream("GoogleAPI/credentials.json", FileMode.Open, FileAccess.Read))
@@ -31,7 +37,7 @@ namespace GroupB_Project.GoogleApi
                     string credPath = "token.json";
                     credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                         GoogleClientSecrets.FromStream(stream).Secrets,
-                        Scopes,
+                        scopes,
                         "user",
                         CancellationToken.None,
                         new FileDataStore(credPath, true)).Result;
@@ -55,9 +61,9 @@ namespace GroupB_Project.GoogleApi
         public void CreateEvent(CalendarService _service, DateTime start, DateTime end, String subject, String location)
         {
             Event body = new Event();
-         
-         
-       
+
+
+
             EventDateTime startTime = new EventDateTime();
             startTime.DateTime = start;
             EventDateTime endTime = new EventDateTime();
@@ -69,8 +75,22 @@ namespace GroupB_Project.GoogleApi
             EventsResource.InsertRequest request = new EventsResource.InsertRequest(_service, body, "pomodoro.test.lwtech@gmail.com");
             Event response = request.Execute();
         }
+
+        public string Get(string uri)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();
+            }
+        }
     }
 }
+
 /*@functions{
 
     //if google imports are broken use nuGet package manager and call 'Install-Package Google.Apis.Calendar.v3'
