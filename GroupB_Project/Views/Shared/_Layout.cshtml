@@ -3,12 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <title>@ViewData["Title"] - Pomodoro</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/jquery/dist/jquery.min.js" />
     <link href="~/css/pomodoro-timer.css" rel="stylesheet">
     <script src="~/js/pomodoro-timer.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </head>
 <body>
@@ -21,6 +23,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between text-right">
+
                     @*<ul class="navbar-nav flex-grow-1">
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -37,9 +40,25 @@
             <a class="nav-link text-dark" asp-area="" asp-controller="Shared" asp-action="_LoginPartial"></a>
             </li>
         </ul>*@
-                    <div class="text-right justify-content-end">
-                        <partial name="_LoginPartial" />
-                    </div>
+                    
+                    <script>
+                        function handleCredentialResponse(response) {
+                            console.log("Encoded JWT ID token: " + response.credential);
+                        }
+                        window.onload = function () {
+                            google.accounts.id.initialize({
+                                client_id: "344127488948-mr4ltdf76uvtc14fp436t9bld3nu1mtp.apps.googleusercontent.com",
+                                callback: handleCredentialResponse
+                            });
+                            google.accounts.id.renderButton(
+                                document.getElementById("buttonDiv"),
+                                { theme: "outline", size: "large" }  // customization attributes
+                            );
+                            google.accounts.id.prompt(); // also display the One Tap dialog
+                        }
+                    </script>
+                    <div id="buttonDiv"></div>
+
                 </div>
             </div>
         </nav>

@@ -60,7 +60,7 @@ namespace GroupB_Project.Controllers
         {
             //Make end of session 30 min after start
             scheduledSession.ScheduleDateEnd = scheduledSession.ScheduledDateStart.AddMinutes(30);
-
+            scheduledSession.UserId = 0;
             if (ModelState.IsValid)
             {
                 
